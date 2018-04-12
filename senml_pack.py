@@ -258,7 +258,7 @@ class SenmlPack(object):
         :return: None
         '''
         if not (isinstance(item, senml_record.SenmlRecord) or isinstance(item, SenmlPack)):
-            raise Exception('invalid type of param, SenmlRecord expected')
+            raise Exception('invalid type of param, SenmlRecord or SenmlPack expected')
         if not item._parent == None:
             raise Exception('item is already part of a pack')
 
@@ -271,8 +271,8 @@ class SenmlPack(object):
         :param item: {SenmlRecord} the item that needs to be removed
         :return: None
         '''
-        if not isinstance(item, senml_record.SenmlRecord):
-            raise Exception('invalid type of param, SenmlRecord expected')
+        if not (isinstance(item, senml_record.SenmlRecord) or isinstance(item, SenmlPack)):
+            raise Exception('invalid type of param, SenmlRecord or SenmlPack expected')
         if not item._parent == self:
             raise Exception('item is not part of this pack')
 
