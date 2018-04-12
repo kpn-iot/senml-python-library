@@ -1,11 +1,12 @@
 from senml_pack import SenmlPack
 from senml_record import SenmlRecord
 from senml_unit import SenmlUnits
+from senml_kpn_names import SenmlNames
 import time
 import datetime
 
 pack = SenmlPack("device_name")
-temp = SenmlRecord("temp", unit=SenmlUnits.SENML_UNIT_DEGREES_CELSIUS, value=23.5)
+temp = SenmlRecord(SenmlNames.KPN_SENML_TEMPERATURE, unit=SenmlUnits.SENML_UNIT_DEGREES_CELSIUS, value=23.5)
 door_pos = SenmlRecord("doorPos", update_time=20, value=True)
 int_val = SenmlRecord("int_val", value=10, sum=100)
 

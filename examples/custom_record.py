@@ -1,6 +1,7 @@
 from senml_pack import SenmlPack
 from senml_record import SenmlRecord
 from senml_unit import SenmlUnits
+from senml_kpn_names import SenmlNames
 
 import datetime
 import time
@@ -10,9 +11,9 @@ class Coordinates(SenmlRecord):
 
     def __init__(self, name, **kwargs):
         '''overriding the init function so we can initiate the 3 senml records that will represent lat,lon, alt'''
-        self._lat = SenmlRecord("lat", unit=SenmlUnits.SENML_UNIT_DEGREES_LATITUDE)     # create these befor calling base constructor so that all can be init correctly from constructor
-        self._lon = SenmlRecord("lon", unit=SenmlUnits.SENML_UNIT_DEGREES_LONGITUDE)
-        self._alt = SenmlRecord("alt", unit=SenmlUnits.SENML_UNIT_METER)
+        self._lat = SenmlRecord(SenmlNames.KPN_SENML_LATTITUDE, unit=SenmlUnits.SENML_UNIT_DEGREES_LATITUDE)     # create these befor calling base constructor so that all can be init correctly from constructor
+        self._lon = SenmlRecord(SenmlNames.KPN_SENML_LONGITUDE, unit=SenmlUnits.SENML_UNIT_DEGREES_LONGITUDE)
+        self._alt = SenmlRecord(SenmlNames.KPN_SENML_ALTITUDE, unit=SenmlUnits.SENML_UNIT_METER)
         super(Coordinates, self).__init__(name, **kwargs)                                 # need to call base init, to make certain all is ok.
 
 

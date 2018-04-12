@@ -1,12 +1,12 @@
 from senml_pack import SenmlPack
 from senml_record import SenmlRecord
 
-def do_actuate():
+def do_actuate(record):
     '''
     called when actuate_me receives a value.
     :return: None
     '''
-    print(actuate_me.value)
+    print(record.value)
 
 def generic_callback(record, **kwargs):
     """
