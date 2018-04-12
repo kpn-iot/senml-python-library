@@ -134,8 +134,10 @@ class SenmlRecord(object):
         form 'n', 'v',...  values for 'n' are either 'n' or 0 (number is for cbor)
         :return: a senml dictionary representation of the record
         '''
-        result = { naming_map['n']: self.name }
+        result = { }
 
+        if self.name:
+            naming_map['n'] = self.name
         if isinstance(self._value, bool):
             result[naming_map['vb']] = self._value
         elif isinstance(self._value, int) or isinstance(self._value, float):
@@ -199,4 +201,4 @@ class SenmlRecord(object):
         '''
         self._from_raw(raw, naming_map)
         if self.actuate:
-            self.actuate()
+            self.actuate(self)

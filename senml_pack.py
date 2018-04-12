@@ -215,7 +215,10 @@ class SenmlPack(object):
             first_rec = internalList[0]
         else:
             first_rec = {}
-        first_rec[naming_map['bn']] = self.name
+            internalList.append(first_rec)
+
+        if self.name:
+            first_rec[naming_map['bn']] = self.name
         if self.base_value:
             first_rec[naming_map['bv']] = self.base_value
         if self.base_unit:
