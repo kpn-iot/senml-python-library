@@ -236,8 +236,8 @@ class SenmlPack(object):
         :return: None
         '''
         records = cbor2.loads(data)  # load the raw senml data
-        naming_map = {-2: 'bn', -3: 'bt', -4: 'bu', -5: 'bv', -16: 'bs',
-                      0: 'n', 1: 'u', 2: 'v', 3: 'vs', 4: 'vb', 8: 'vd', 5: 's', 6: 't', 7: 'ut'}
+        naming_map = {'bn': -2, 'bt': -3, 'bu': -4, 'bv': -5, 'bs': -16,
+                      'n': 0, 'u': 1, 'v': 2, 'vs': 3, 'vb': 4, 'vd': 8, 's': 5, 't': 6, 'ut': 7}
         self._process_incomming_data(records, naming_map)
 
     def to_cbor(self):
