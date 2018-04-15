@@ -137,8 +137,14 @@ class SenmlRecord(object):
         result = { }
 
         if self.name:
-            naming_map['n'] = self.name
-        if isinstance(self._value, bool):
+            result[naming_map['n']] = self.name
+
+        if self._sum:
+            if self._parent and self._parent.base_sum:
+                result[naming_map['s']] = self._sum - self._parent.base_sum
+            else:
+                result[naming_map['s']] = self._sum
+        elif isinstance(self._value, bool):
             result[naming_map['vb']] = self._value
         elif isinstance(self._value, int) or isinstance(self._value, float):
             if self._parent and self._parent.base_value:
@@ -152,6 +158,8 @@ class SenmlRecord(object):
                 result[naming_map['vd']] = base64.b64encode(self._value)
             else:
                 result[naming_map['vd']] = self._value
+        else:
+            raise Exception("sum or value of type bootl, number, string or byte-array is required")
 
         if self._time:
             if self._parent and self._parent.base_time:
@@ -164,12 +172,6 @@ class SenmlRecord(object):
 
         if self._update_time:
             result[naming_map['ut']] = self._update_time
-
-        if self._sum:
-            if self._parent and self._parent.base_sum:
-                result[naming_map['s']] = self._sum - self._parent.base_sum
-            else:
-                result[naming_map['s']] = self._sum
 
         appendTo.append(result)
 
