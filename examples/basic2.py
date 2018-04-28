@@ -1,7 +1,4 @@
-from senml_pack import SenmlPack
-from senml_record import SenmlRecord
-from senml_unit import SenmlUnits
-from senml_kpn_names import SenmlNames
+from kpn_senml import *
 import time
 
 pack = SenmlPack("device_name")
@@ -9,9 +6,9 @@ temp = SenmlRecord(SenmlNames.KPN_SENML_TEMPERATURE, unit=SenmlUnits.SENML_UNIT_
 door_pos = SenmlRecord("doorPos", update_time=20, value=True)
 str_val = SenmlRecord("str val")
 
-pack.append(temp)
-pack.append(door_pos)
-pack.append(str_val)
+pack.add(temp)
+pack.add(door_pos)
+pack.add(str_val)
 
 while True:
     temp.value = temp.value + 1.1

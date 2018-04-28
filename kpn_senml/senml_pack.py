@@ -182,11 +182,11 @@ class SenmlPack(object):
         rec = senml_record.SenmlRecord(raw[naming_map['n']])
         rec._from_raw(raw, naming_map)
         if device:
-            device.append(rec)
+            device.add(rec)
             if self.actuate:
                 self.actuate(rec, device=device)
         else:
-            self.append(rec)
+            self.add(rec)
             if self.actuate:
                 self.actuate(rec, device=None)
 
@@ -251,7 +251,7 @@ class SenmlPack(object):
         self._build_rec_dict(naming_map, converted)
         return cbor2.dumps(converted)
 
-    def append(self, item):
+    def add(self, item):
         '''
         adds the item to the list of records
         :param item: {SenmlRecord} the item that needs to be added to the pack
@@ -267,7 +267,7 @@ class SenmlPack(object):
 
     def remove(self, item):
         '''
-        removes the item from the list of records
+        removes the item from the pack
         :param item: {SenmlRecord} the item that needs to be removed
         :return: None
         '''
@@ -278,3 +278,12 @@ class SenmlPack(object):
 
         self._data.remove(item)
         item._parent = None
+
+    def clear(self):
+        '''
+        clear the list of the pack
+        :return: None
+        '''
+        for item in self._data:
+            item._parent = None
+        self._data = []

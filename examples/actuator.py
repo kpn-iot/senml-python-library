@@ -1,5 +1,4 @@
-from senml_pack import SenmlPack
-from senml_record import SenmlRecord
+from kpn_senml import *
 import binascii
 
 def do_actuate(record):
@@ -22,7 +21,7 @@ def generic_callback(record, **kwargs):
 pack = SenmlPack("device_name", generic_callback)
 actuate_me = SenmlRecord("actuator", callback=do_actuate)
 
-pack.append(actuate_me)
+pack.add(actuate_me)
 
 json_data = '[{"bn": "device_name", "n":"actuator", "v": 10 }]'
 print(json_data)

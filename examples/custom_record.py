@@ -1,8 +1,4 @@
-from senml_pack import SenmlPack
-from senml_record import SenmlRecord
-from senml_unit import SenmlUnits
-from senml_kpn_names import SenmlNames
-
+from kpn_senml import *
 import datetime
 import time
 
@@ -86,8 +82,8 @@ class Coordinates(SenmlRecord):
 pack = SenmlPack("device_name")
 loc = Coordinates("location")
 loc2 = Coordinates("location", value=[52.0259, 5.4775, 230])
-pack.append(loc)
-pack.append(loc2)
+pack.add(loc)
+pack.add(loc2)
 
 loc.value = [51.0259, 4.4775, 10]
 print(pack.to_json())
