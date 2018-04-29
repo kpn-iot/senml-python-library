@@ -1,3 +1,4 @@
 .idea/
 venv/pip-selfcheck.json
 venv/
+*.pyc

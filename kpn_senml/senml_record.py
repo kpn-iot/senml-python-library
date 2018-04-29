@@ -1,7 +1,8 @@
 import base64
+from kpn_senml.senml_base import SenmlBase
 
 
-class SenmlRecord(object):
+class SenmlRecord(SenmlBase):
     '''represents a single value in a senml pack object'''
 
     def __init__(self, name, **kwargs):

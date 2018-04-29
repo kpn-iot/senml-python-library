@@ -1,7 +1,9 @@
 
 import senml_record
+from kpn_senml.senml_base import SenmlBase
 import json
 import cbor2
+
 
 class SenmlPackIterator:
     '''an iterator to walk over all records in a pack'''
@@ -21,7 +23,7 @@ class SenmlPackIterator:
         else:
             raise StopIteration()
 
-class SenmlPack(object):
+class SenmlPack(SenmlBase):
     '''
     represents a sneml pack object. This can contain multiple records but also other (child) pack objects.
     When the pack object only contains records, it represents the data of a device.
@@ -206,7 +208,7 @@ class SenmlPack(object):
         converts the object to a senml object with the proper naming in place.
         This can be recursive: a pack can contain other packs.
         :param naming_map: a dictionary used to pick the correct field names for either senml json or senml cbor
-        :return:
+        :return: None
         '''
         internalList = []
         for item in self._data:
@@ -257,7 +259,7 @@ class SenmlPack(object):
         :param item: {SenmlRecord} the item that needs to be added to the pack
         :return: None
         '''
-        if not (isinstance(item, senml_record.SenmlRecord) or isinstance(item, SenmlPack)):
+        if not (isinstance(item, senml_record.SenmlBase)):
             raise Exception('invalid type of param, SenmlRecord or SenmlPack expected')
         if not item._parent == None:
             raise Exception('item is already part of a pack')
@@ -271,7 +273,7 @@ class SenmlPack(object):
         :param item: {SenmlRecord} the item that needs to be removed
         :return: None
         '''
-        if not (isinstance(item, senml_record.SenmlRecord) or isinstance(item, SenmlPack)):
+        if not (isinstance(item, senml_record.SenmlBase)):
             raise Exception('invalid type of param, SenmlRecord or SenmlPack expected')
         if not item._parent == self:
             raise Exception('item is not part of this pack')
