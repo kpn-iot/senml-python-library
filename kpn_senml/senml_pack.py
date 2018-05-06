@@ -1,5 +1,5 @@
 
-import senml_record
+from kpn_senml.senml_record import SenmlRecord
 from kpn_senml.senml_base import SenmlBase
 import json
 import cbor2
@@ -190,7 +190,7 @@ class SenmlPack(SenmlBase):
         :param raw: the raw record definition, as found in the json structure. this still has invalid labels.
         :return: None
         '''
-        rec = senml_record.SenmlRecord(raw[naming_map['n']])
+        rec = SenmlRecord(raw[naming_map['n']])
         if device:
             device.add(rec)
             rec._from_raw(raw, naming_map)
@@ -269,7 +269,7 @@ class SenmlPack(SenmlBase):
         :param item: {SenmlRecord} the item that needs to be added to the pack
         :return: None
         '''
-        if not (isinstance(item, senml_record.SenmlBase)):
+        if not (isinstance(item, SenmlBase)):
             raise Exception('invalid type of param, SenmlRecord or SenmlPack expected')
         if not item._parent == None:
             raise Exception('item is already part of a pack')
@@ -283,7 +283,7 @@ class SenmlPack(SenmlBase):
         :param item: {SenmlRecord} the item that needs to be removed
         :return: None
         '''
-        if not (isinstance(item, senml_record.SenmlBase)):
+        if not (isinstance(item, SenmlBase)):
             raise Exception('invalid type of param, SenmlRecord or SenmlPack expected')
         if not item._parent == self:
             raise Exception('item is not part of this pack')

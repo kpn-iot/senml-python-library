@@ -2,3 +2,5 @@
 venv/pip-selfcheck.json
 venv/
 *.pyc
+dist/
+kpn_senml.egg-info/

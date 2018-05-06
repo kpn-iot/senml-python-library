@@ -1,4 +1,4 @@
-from senml_unit import enum
+from kpn_senml.senml_unit import enum
 
 
 SenmlNames = enum(KPN_SENML_PRESSURE="pressure",
