@@ -1,7 +1,7 @@
 # Introduction
 
-The KPN SenML library helps you create [senml documents](https://tools.ietf.org/html/draft-ietf-core-senml-13) so you
-can transport and/or receive data in a uniform way to and from devices using a communication protocol of your choice.
+The KPN SenML library helps you create and parse [senml documents](https://tools.ietf.org/html/draft-ietf-core-senml-13)
+in both json and cbor format.
 
 # key features
 
