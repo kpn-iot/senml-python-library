@@ -17,7 +17,7 @@ dev1_pack.add(door_pos)
 dev2_pack.add(str_val)
 
 while True:
-    temp.value = temp.value + 1.1
+    temp.value = round(temp.value + 1.1, 2)         # use round() to get consistent rendering length for value, otherwise there are rounding errors.
     door_pos.value = not door_pos.value
     str_val.value = "test"
     print(gateway_pack.to_json())
