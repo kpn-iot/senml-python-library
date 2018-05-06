@@ -44,4 +44,4 @@ actuate_me = SenmlRecord("actuator", callback=do_actuate)
 
 gateway.add(device)
 device.add(actuate_me)
-gateway.from_json('[{"bn": "gateway_name", "n":"temp", "v": 22},{"n": "gateway_actuator", "vb": true}, {"bn": "device_name", "n":"actuator", "v": 20 }, {"n": "another_actuator", "vs": "a value"}, {"bn": "device_2", "n":"temp", "v": 20 }, {"n": "actuator2", "vs": "value2"}]')
+gateway.from_json('[{"bn": "gateway_name", "bv": 10, "n":"temp", "v": 22},{"n": "gateway_actuator", "vb": true}, {"bn": "device_name", "n":"actuator", "v": 20 }, {"n": "another_actuator", "vs": "a value"}, {"bn": "device_2", "bv": 10.5, "n":"temp", "v": 20 }, {"n": "actuator2", "vs": "value2"}]')
