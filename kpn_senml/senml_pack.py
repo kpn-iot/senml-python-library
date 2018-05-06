@@ -25,7 +25,7 @@ class SenmlPackIterator:
 
 class SenmlPack(SenmlBase):
     '''
-    represents a sneml pack object. This can contain multiple records but also other (child) pack objects.
+    represents a senml pack object. This can contain multiple records but also other (child) pack objects.
     When the pack object only contains records, it represents the data of a device.
     If the pack object has child pack objects, then it represents a gateway
     '''

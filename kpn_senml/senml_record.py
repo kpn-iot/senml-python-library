@@ -9,13 +9,13 @@ class SenmlRecord(SenmlBase):
         '''
         create a new senml record
         :param kwargs:  optional parameters:
-            - value: the value to store in the record
-            - time: the timestamp to use (when was the value measured)
-            - name: the name of hte record
-            - unit: unit value
-            - sum: sum value
-            - update_time: max time before sensor will provide an updated reading
-            - callback: a callback function taht will be called when actuator data has been found. Expects no params
+                            - value: the value to store in the record
+                            - time: the timestamp to use (when was the value measured)
+                            - name: the name of hte record
+                            - unit: unit value
+                            - sum: sum value
+                            - update_time: max time before sensor will provide an updated reading
+                            - callback: a callback function taht will be called when actuator data has been found. Expects no params
         '''
         self.__parent = None                                    # using double __ cause it's a field for an internal property
         self._unit = None                                       # declare and init internal fields
@@ -89,7 +89,7 @@ class SenmlRecord(SenmlBase):
     @property
     def time(self):
         ''' get the time at which the measurement for the record was taken.
-        :return a unix time stamp. This is the absolute value, not adjusted to the base time of the pack.
+        :return: a unix time stamp. This is the absolute value, not adjusted to the base time of the pack.
         '''
         return self._time
 
@@ -108,7 +108,7 @@ class SenmlRecord(SenmlBase):
     @property
     def update_time(self):
         ''' get the time at which the next measurement is expected to be taken for this record.
-        :return a unix time stamp. This is the absolute value, not adjusted to the base time of the pack.
+        :return: a unix time stamp. This is the absolute value, not adjusted to the base time of the pack.
         '''
         return self._update_time
 
@@ -138,16 +138,17 @@ class SenmlRecord(SenmlBase):
         '''
         the parent pack object for this record. This is a property so that inheriters can override and do custom
         actions when the parent is set (like passing it on to their children
-        :return:
+        :return: a SenMLBase object that contains this object as child.
         '''
         return self.__parent
 
     @_parent.setter
     def _parent(self, value):
         '''
-        the parent pack object for this record. This is a property so that inheriters can override and do custom
+        Set the parent pack object for this record. This is a property so that inheriters can override and do custom
         actions when the parent is set (like passing it on to their children
-        :return:
+        :param value: the object to assign as parent.
+        :return: None
         '''
         self.__parent = value
 
@@ -208,7 +209,7 @@ class SenmlRecord(SenmlBase):
         extracts te data from the raw record. Used during parsing of incoming data.
         :param raw: a raw senml record which still contains the original field names
         :param naming_map: used to map cbor names to json field names
-        :return:
+        :return: None
         '''
         if naming_map['v'] in raw:
             val = raw[naming_map['v']]
