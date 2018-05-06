@@ -68,7 +68,8 @@ class SenmlPack(SenmlBase):
     @property
     def base_value(self):
         '''
-        the base value of the pack.
+        the base value of the pack. The value of the records will be subtracted by this value during rendering.
+        While parsing, this value is added to the value of the records.
         :return: a number
         '''
         return self._base_value
@@ -95,7 +96,7 @@ class SenmlPack(SenmlBase):
     @base_sum.setter
     def base_sum(self, value):
         '''
-        set the base value.
+        set the base sum.
         :param value: only number allowed
         :return:
         '''
@@ -104,6 +105,11 @@ class SenmlPack(SenmlBase):
 
     @property
     def base_time(self):
+        '''
+        Get the base time assigned to this pack object.
+        While rendering, this value will be subtracted from the value of the records.
+        :return: unix time stamp representing the base time
+        '''
         return self._base_time
 
     @base_time.setter
@@ -125,7 +131,7 @@ class SenmlPack(SenmlBase):
         '''
         parse a json string and convert it to a senml pack structure
         :param data: a string containing json data.
-        :return: None, will r
+        :return: None, will call the appropriate callback functions.
         '''
         records = json.loads(data)                                              # load the raw senml data
         self._process_incomming_data(records, SenmlPack.json_mappings)
@@ -133,7 +139,7 @@ class SenmlPack(SenmlBase):
 
     def _process_incomming_data(self, records, naming_map):
         '''
-        generic processor for incomming data (actuators.
+        generic processor for incoming data (actuators.
         :param records: the list of raw senml data, parsed from a json or cbor structure
         :param naming_map: translates cbor to json field names (when needed).
         :return: None
@@ -154,6 +160,9 @@ class SenmlPack(SenmlBase):
                     self._data.append(device)
                     cur_pack_el = device
                     new_pack = True
+
+                if naming_map['bv'] in item:                                        # need to copy the base value assigned to the pack element so we can do proper conversion for actuators.
+                    cur_pack_el.base_value = item[naming_map['bv']]
 
                 rec_el = next( (x for x in cur_pack_el._data if x.name == item[naming_map['n']]), None )
                 if rec_el:
@@ -182,13 +191,14 @@ class SenmlPack(SenmlBase):
         :return: None
         '''
         rec = senml_record.SenmlRecord(raw[naming_map['n']])
-        rec._from_raw(raw, naming_map)
         if device:
             device.add(rec)
+            rec._from_raw(raw, naming_map)
             if self.actuate:
                 self.actuate(rec, device=device)
         else:
             self.add(rec)
+            rec._from_raw(raw, naming_map)
             if self.actuate:
                 self.actuate(rec, device=None)
 

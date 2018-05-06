@@ -78,26 +78,49 @@ class SenmlRecord(SenmlBase):
     @value.setter
     def value(self, value):
         '''set the current value. Will not automatically update the time stamp. This has to be done seperatly for more
-            finegrained control'''
+            finegrained control
+            Note: when the value is a float, you can control rounding in the rendered output by using the function
+            round() while assigning the value. ex: record.value = round(12.2 / 1.5423, 2)
+        '''
         self._check_value_type(value)
         self._value = value
 
 
     @property
     def time(self):
+        ''' get the time at which the measurement for the record was taken.
+        :return a unix time stamp. This is the absolute value, not adjusted to the base time of the pack.
+        '''
         return self._time
 
     @time.setter
     def time(self, value):
+        '''
+        Set the time at which the measurement for this record was taken.
+        This should be the absolute value. Any adjustments that need to be done for the base-time of the pack are
+        done automatically during rendering.
+        :param value: a unix time stamp
+        :return: None.
+        '''
         self._check_number_type(value, 'time')
         self._time = value
 
     @property
     def update_time(self):
+        ''' get the time at which the next measurement is expected to be taken for this record.
+        :return a unix time stamp. This is the absolute value, not adjusted to the base time of the pack.
+        '''
         return self._update_time
 
     @update_time.setter
     def update_time(self, value):
+        '''
+        Set the time at which the next measurement is expected to be taken for this record.
+        This should be the absolute value. Any adjustments that need to be done for the base-time of the pack are
+        done automatically during rendering.
+        :param value: a unix time stamp
+        :return: None.
+        '''
         self._check_number_type(value, 'update_time')
         self._update_time = value
 
@@ -172,7 +195,10 @@ class SenmlRecord(SenmlBase):
             result[naming_map['u']] = self.unit
 
         if self._update_time:
-            result[naming_map['ut']] = self._update_time
+            if self._parent and self._parent.base_time:
+                result[naming_map['ut']] = self._update_time - self._parent.base_time
+            else:
+                result[naming_map['ut']] = self._update_time
 
         appendTo.append(result)
 
@@ -186,6 +212,8 @@ class SenmlRecord(SenmlBase):
         '''
         if naming_map['v'] in raw:
             val = raw[naming_map['v']]
+            if self._parent and self._parent.base_value:
+                val += self._parent.base_value
         elif naming_map['vs'] in raw:
             val = raw[naming_map['vs']]
         elif naming_map['vb'] in raw:
