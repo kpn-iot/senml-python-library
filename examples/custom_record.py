@@ -1,3 +1,16 @@
+# _  __  ____    _   _
+# | |/ / |  _ \  | \ | |
+# | ' /  | |_) | |  \| |
+# | . \  |  __/  | |\  |
+# |_|\_\ |_|     |_| \_|
+#
+# (c) 2018 KPN
+# License: GNU General Public License v3.0.
+# Author: Jan Bogaerts
+#
+# custom records example
+
+
 from kpn_senml import *
 import datetime
 import time
