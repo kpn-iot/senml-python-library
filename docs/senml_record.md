@@ -65,7 +65,7 @@ _returns_: None
 
 ### sum 
 
-
+get/set the sum assigned to the record
 
 ### time 
 
