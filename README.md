@@ -12,3 +12,5 @@ in both json and cbor format.
 - direct support to read/write in json and cbor format.
 - automatically adjusts record data with respect to base time, base value & base sum.
 
+Please visit our [docs site](https://kpn-iot.github.io/senml-python-library) for more info.
+
