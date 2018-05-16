@@ -5,7 +5,7 @@
 # |_|\_\ |_|     |_| \_|
 #
 # (c) 2018 KPN
-# License: GNU General Public License v3.0.
+# License: MIT license.
 # Author: Jan Bogaerts
 #
 # sensor names
