@@ -2,9 +2,9 @@ from setuptools import setup
 
 setup(
     name='kpn_senml',
-    version='1.0.0rc3',
+    version='1.0.1',
     packages=['kpn_senml'],
-    url='https://github.com/jan-bogaerts/slate',
+    url='https://kpn-iot.github.io/senml-python-library/',
     license='APACHE',
     author='Jan Bogaerts',
     author_email='jb@elastetic.com',
