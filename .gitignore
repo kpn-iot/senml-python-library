@@ -8,3 +8,4 @@ kpn_senml.egg-info/
 build/
 tests/htmlcov/
 tests/.coverage
+env
