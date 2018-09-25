@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 def get_requires(filename):
@@ -15,7 +15,7 @@ def get_requires(filename):
 setup(
     name='kpn_senml',
     version='1.1.0',
-    packages=['kpn_senml'],
+    packages=find_packages(exclude=['tests']),
     url='https://kpn-iot.github.io/senml-python-library/',
     license='MIT',
     author='Jan Bogaerts',
@@ -33,4 +33,5 @@ setup(
     ],
     keywords='senml kpn cbor json',
     install_requires=get_requires('requirements.txt'),
+    extras_require={'test': get_requires('requirements_test.txt')},
 )

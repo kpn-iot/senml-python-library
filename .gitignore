@@ -4,3 +4,7 @@ venv/
 *.pyc
 dist/
 kpn_senml.egg-info/
+.cache/
+build/
+tests/htmlcov/
+tests/.coverage
