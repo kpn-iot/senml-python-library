@@ -15,3 +15,6 @@ in both json and cbor format.
 
 Please visit our [docs site](https://kpn-iot.github.io/senml-python-library) for more info.
 
+#### LICENSE
+[MIT](LICENSE)
+

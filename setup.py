@@ -1,4 +1,16 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from setuptools import setup
+
+
+def get_requires(filename):
+    requirements = []
+    with open(filename) as req_file:
+        for line in req_file.read().splitlines():
+            if not line.strip().startswith("#"):
+                requirements.append(line)
+    return requirements
+
 
 setup(
     name='kpn_senml',
@@ -20,7 +32,5 @@ setup(
             'Operating System :: OS Independent',
     ],
     keywords='senml kpn cbor json',
-    install_requires=[
-          'cbor2==4.1.0',
-    ]
+    install_requires=get_requires('requirements.txt'),
 )
