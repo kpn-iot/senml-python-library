@@ -1,0 +1,19 @@
+matrix:
+  fast_finish: true
+  include:
+  - os: linux
+    sudo: false
+    language: python
+    python: '2.7'
+  - os: linux
+    sudo: false
+    language: python
+    python: '3.6'
+
+install:
+- pip install -e .[test]
+
+script:
+- python setup.py install
+- cd tests
+- pytest . -vvvv --cov=kpn_senml
