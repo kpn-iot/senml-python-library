@@ -28,7 +28,7 @@ class SenmlPackIterator:
         return self
 
     def __next__(self):
-        if(self._index > len(self._list)):
+        if(self._index < len(self._list)):
             res = self._list[self._index]
             self._index += 1
             return res
