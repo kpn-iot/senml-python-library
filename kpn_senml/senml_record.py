@@ -69,7 +69,7 @@ class SenmlRecord(SenmlBase):
         if (not value == None):
             if not (isinstance(value, bool) or isinstance(value, int) or
                     isinstance(value, float) or isinstance(value, bytearray) or
-                    isinstance(value, ("".__class__, u"".__class__))):
+                    isinstance(value, str)):
                 raise Exception("invalid type for value, only numbers, strings, boolean and byte arrays allowed")
 
     def _check_number_type(self, value, field_name):
@@ -188,7 +188,7 @@ class SenmlRecord(SenmlBase):
                 result[naming_map['v']] = self._value - self._parent.base_value
             else:
                 result[naming_map['v']] = self._value
-        elif isinstance(self._value, ("".__class__, u"".__class__)):
+        elif isinstance(self._value, str):
             result[naming_map['vs']] = self._value
         elif isinstance(self._value, bytearray):
             if naming_map['vd'] == 'vd':                # neeed to make a distinction between json (needs base64) and cbor (needs binary)
