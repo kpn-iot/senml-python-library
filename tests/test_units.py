@@ -50,7 +50,7 @@ def test_enums():
     assert kpn_senml.SenmlUnits.SENML_UNIT_DEGREES_LATITUDE == "lat"
     assert kpn_senml.SenmlUnits.SENML_UNIT_DEGREES_LONGITUDE == "lon"
     assert kpn_senml.SenmlUnits.SENML_UNIT_PH == "pH"
-    assert kpn_senml.SenmlUnits.SENML_UNIT_DECIBEL == "db"
+    assert kpn_senml.SenmlUnits.SENML_UNIT_DECIBEL == "dB"
     assert kpn_senml.SenmlUnits.SENML_UNIT_DECIBEL_RELATIVE_TO_1_W == "dBW"
     assert kpn_senml.SenmlUnits.SENML_UNIT_BEL == "Bspl"
     assert kpn_senml.SenmlUnits.SENML_UNIT_COUNTER == "count"

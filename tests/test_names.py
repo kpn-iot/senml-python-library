@@ -8,7 +8,7 @@ import kpn_senml
 def test_enums():
     assert kpn_senml.SenmlNames.KPN_SENML_PRESSURE == "pressure"
     assert kpn_senml.SenmlNames.KPN_SENML_ANGLE == "angle"
-    assert kpn_senml.SenmlNames.KPN_SENML_LENGHT == "lenght"
+    assert kpn_senml.SenmlNames.KPN_SENML_LENGHT == "length"
     assert kpn_senml.SenmlNames.KPN_SENML_BREADTH == "breadth"
     assert kpn_senml.SenmlNames.KPN_SENML_HEIGHT == "height"
     assert kpn_senml.SenmlNames.KPN_SENML_WEIGHT == "weight"
@@ -28,7 +28,7 @@ def test_enums():
     assert kpn_senml.SenmlNames.KPN_SENML_ACCELERATIONZ == "accelerationZ"
     assert kpn_senml.SenmlNames.KPN_SENML_HEADING == "heading"
     assert kpn_senml.SenmlNames.KPN_SENML_LONGITUDE == "longitude"
-    assert kpn_senml.SenmlNames.KPN_SENML_LATTITUDE == "lattitude"
+    assert kpn_senml.SenmlNames.KPN_SENML_LATTITUDE == "latitude"
     assert kpn_senml.SenmlNames.KPN_SENML_CARBONMONOXIDE == "carbonMonoxide"
     assert kpn_senml.SenmlNames.KPN_SENML_CARBONDIOXIDE == "carbonDioxide"
     assert kpn_senml.SenmlNames.KPN_SENML_SOUND == "sound"

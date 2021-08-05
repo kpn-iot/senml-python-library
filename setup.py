@@ -14,7 +14,7 @@ def get_requires(filename):
 
 setup(
     name='kpn_senml',
-    version='1.1.0',
+    version='1.1.1',
     packages=find_packages(exclude=['tests']),
     url='https://kpn-iot.github.io/senml-python-library/',
     license='MIT',
