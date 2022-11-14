@@ -196,7 +196,7 @@ class SenmlRecord(SenmlBase):
             else:
                 result[naming_map['vd']] = self._value
         else:
-            raise Exception("sum or value of type bootl, number, string or byte-array is required")
+            raise Exception("sum or value of type bool, number, string or byte-array is required")
 
         if self._time:
             if self._parent and self._parent.base_time:
